@@ -42,7 +42,190 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      amenities: {
+        Row: {
+          created_at: string
+          icon: string | null
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          icon?: string | null
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          icon?: string | null
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      room_type_amenities: {
+        Row: {
+          amenity_id: string
+          created_at: string
+          room_type_id: string
+        }
+        Insert: {
+          amenity_id: string
+          created_at?: string
+          room_type_id: string
+        }
+        Update: {
+          amenity_id?: string
+          created_at?: string
+          room_type_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "room_type_amenities_amenity_id_fkey"
+            columns: ["amenity_id"]
+            isOneToOne: false
+            referencedRelation: "amenities"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "room_type_amenities_room_type_id_fkey"
+            columns: ["room_type_id"]
+            isOneToOne: false
+            referencedRelation: "room_types"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      room_type_images: {
+        Row: {
+          alt_text: string
+          created_at: string
+          id: string
+          room_type_id: string
+          sort_order: number
+          storage_path: string
+          updated_at: string
+        }
+        Insert: {
+          alt_text: string
+          created_at?: string
+          id?: string
+          room_type_id: string
+          sort_order?: number
+          storage_path: string
+          updated_at?: string
+        }
+        Update: {
+          alt_text?: string
+          created_at?: string
+          id?: string
+          room_type_id?: string
+          sort_order?: number
+          storage_path?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "room_type_images_room_type_id_fkey"
+            columns: ["room_type_id"]
+            isOneToOne: false
+            referencedRelation: "room_types"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      room_types: {
+        Row: {
+          base_price_cents: number
+          bed_config: string
+          created_at: string
+          description: string
+          featured_sort_order: number | null
+          id: string
+          is_active: boolean
+          is_featured: boolean
+          max_occupancy: number
+          name: string
+          size_sqm: number | null
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          base_price_cents: number
+          bed_config: string
+          created_at?: string
+          description: string
+          featured_sort_order?: number | null
+          id?: string
+          is_active?: boolean
+          is_featured?: boolean
+          max_occupancy: number
+          name: string
+          size_sqm?: number | null
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          base_price_cents?: number
+          bed_config?: string
+          created_at?: string
+          description?: string
+          featured_sort_order?: number | null
+          id?: string
+          is_active?: boolean
+          is_featured?: boolean
+          max_occupancy?: number
+          name?: string
+          size_sqm?: number | null
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      rooms: {
+        Row: {
+          created_at: string
+          floor: number | null
+          id: string
+          is_active: boolean
+          room_number: string
+          room_type_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          floor?: number | null
+          id?: string
+          is_active?: boolean
+          room_number: string
+          room_type_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          floor?: number | null
+          id?: string
+          is_active?: boolean
+          room_number?: string
+          room_type_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rooms_room_type_id_fkey"
+            columns: ["room_type_id"]
+            isOneToOne: false
+            referencedRelation: "room_types"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
