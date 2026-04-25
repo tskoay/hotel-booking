@@ -43,6 +43,7 @@ Full development plan lives at `docs/plan.md`. Always read it before starting a 
   /supabase/server.ts   # server client (cookies-aware)
   /supabase/client.ts   # browser client
   /supabase/admin.ts    # service-role client, server-only
+  /supabase/proxy.ts    # session-refresh helper, called from /proxy.ts
   /stripe.ts
   /pricing.ts           # all price math, server-only
   /availability.ts      # all availability logic, server-only
@@ -51,7 +52,7 @@ Full development plan lives at `docs/plan.md`. Always read it before starting a 
   /migrations/*.sql     # versioned schema changes
   /seed.sql
 /types/database.ts      # generated, do not hand-edit
-middleware.ts
+proxy.ts                # Next.js 16 file convention (replaces middleware.ts)
 docs/
   plan.md               # full phased plan
   decisions.md          # log of choices made during build

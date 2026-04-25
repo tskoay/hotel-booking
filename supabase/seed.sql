@@ -1,0 +1,3 @@
+-- Seed data for local development.
+-- Loaded by `supabase db reset` after migrations apply.
+-- Phase 0: empty. Populated in Phase 1 with room types, amenities, images.
