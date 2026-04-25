@@ -97,9 +97,16 @@ docs/
 
 ## Current Status
 
-- **Phase:** 0 — Foundation
-- **Last completed:** (nothing yet — fresh repo)
-- **Next task:** initialize Next.js, Tailwind, shadcn, Supabase clients, deploy to Vercel
+- **Phase:** 1 — Public Landing Page
+- **Last completed:** Phase 0 — foundation, Supabase wired, Sentry scaffolded, deployed to Vercel
+- **Next task:** Phase 1 — header/footer layout, hero + amenities + gallery + testimonials sections, `/rooms` index with filters, `/rooms/[id]` detail, availability search bar (server function), seed room types/images/amenities, SEO metadata + sitemap + robots.txt
+
+### Deployment
+
+- **Production:** https://hotel-booking-beta-six.vercel.app
+- **GitHub:** https://github.com/tskoay/hotel-booking
+- **Supabase project:** `pyzobfqkxkygmwqrysmn` (Sydney region)
+- **Vercel:** auto-deploys `master` to production; PRs get preview deploys
 
 Update this section at the end of every session.
 

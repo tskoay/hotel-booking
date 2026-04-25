@@ -97,3 +97,28 @@ Append-only record of non-obvious choices made while building this project. Each
 **Decision:** Put it in `.env.local`.
 **Reasoning:** Project-scoped — works for any contributor cloning the repo without polluting their global env.
 **Caveat:** The Supabase CLI doesn't auto-load `.env.local`. To run CLI commands from the shell, prefix with `dotenv -e .env.local --` or `export` it in the session. Revisit when we add a `gen:types` npm script.
+
+---
+
+## 2026-04-25 — Vercel via dashboard import, not CLI
+**Context:** Two ways to deploy: `pnpm dlx vercel link` + `vercel deploy` from the CLI, or import the GitHub repo via the Vercel dashboard.
+**Decision:** Dashboard import.
+**Reasoning:** The Vercel CLI's auth flow is interactive (browser OAuth, no `--token` non-TTY path here) — same blocker we hit with `supabase login`. The dashboard auto-creates the GitHub app integration so every PR gets preview deploys with no extra setup. Env vars go in once via the UI rather than `vercel env add` per variable.
+**Production URL:** https://hotel-booking-beta-six.vercel.app — Vercel auto-suffixed `-beta-six` because `hotel-booking.vercel.app` was taken at the team-account level. Custom domain comes in Phase 6.
+**Region:** Sydney (`syd1`), matching the Supabase project. Cold-start latency for the proxy session-refresh is well under 100ms when both hops stay in-region.
+
+---
+
+## 2026-04-25 — `master` branch, not `main`
+**Context:** `create-next-app` initialized the repo with `master`. GitHub's default for new repos is `main`.
+**Decision:** Leave it as `master` for now.
+**Reasoning:** Single contributor; rename has zero functional value today. Cheap to do later (`gh repo edit --default-branch main` + local rename + Vercel default-branch update).
+**Revisit when:** the project gains a second contributor or before any PR-based external review.
+
+---
+
+## 2026-04-25 — Public GitHub repo
+**Context:** Repo visibility is a one-click choice at creation; flipping later means re-checking PRs/branches.
+**Decision:** Public.
+**Reasoning:** No real secrets are committed (RLS-protected DB, secret keys live in Vercel env, `.env.local` gitignored). Project ref `pyzobfqkxkygmwqrysmn` is visible but useless without keys. Public lets the repo serve as a portfolio / writeup artifact.
+**Watch out for:** Don't ever commit `.env.local`, the database password, or Stripe live-mode keys. The `.gitignore` covers `.env*` (with the `!.env.example` exception) which is the main guard.
