@@ -97,9 +97,9 @@ docs/
 
 ## Current Status
 
-- **Phase:** 1 — Public Landing Page
-- **Last completed:** Phase 0 — foundation, Supabase wired, Sentry scaffolded, deployed to Vercel
-- **Next task:** Phase 1 — header/footer layout, hero + amenities + gallery + testimonials sections, `/rooms` index with filters, `/rooms/[id]` detail, availability search bar (server function), seed room types/images/amenities, SEO metadata + sitemap + robots.txt
+- **Phase:** 2 — Authentication & Accounts
+- **Last completed:** Phase 1 — schema + seed (room_types, amenities, room_type_amenities, room_type_images, rooms), storage bucket, marketing route group, hero + featured rooms + amenities + testimonials + location sections, /rooms index with filters, /rooms/[slug] detail with carousel, availability search UI, sitemap.ts + robots.ts
+- **Next task:** Phase 2 — profiles table + signup trigger, /signup, /signin, /forgot-password, /reset-password, /auth/callback handler, auth proxy.ts protection on /account/*, /account profile page with avatar upload
 
 ### Deployment
 
