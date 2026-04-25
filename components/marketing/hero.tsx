@@ -1,12 +1,13 @@
 import Link from "next/link";
 
+import { AvailabilitySearch } from "@/components/marketing/availability-search";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
       <div className="from-background via-background to-muted/40 absolute inset-0 -z-10 bg-gradient-to-b" />
-      <div className="mx-auto w-full max-w-6xl px-6 py-24 sm:py-32 md:py-40">
+      <div className="mx-auto w-full max-w-6xl px-6 py-20 sm:py-28 md:py-32">
         <div className="max-w-3xl">
           <p className="text-muted-foreground mb-4 text-xs font-medium tracking-[0.3em] uppercase">
             Sydney · est. 2024
@@ -26,6 +27,10 @@ export function Hero() {
               <Link href="/#location">Visit us</Link>
             </Button>
           </div>
+        </div>
+
+        <div className="mt-12">
+          <AvailabilitySearch />
         </div>
       </div>
     </section>

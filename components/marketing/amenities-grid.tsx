@@ -1,29 +1,4 @@
-import {
-  Car,
-  Coffee,
-  ConciergeBell,
-  Dumbbell,
-  type LucideIcon,
-  PawPrint,
-  Tv,
-  Waves,
-  Wifi,
-  Wind,
-  Wine,
-} from "lucide-react";
-
-const iconMap: Record<string, LucideIcon> = {
-  wifi: Wifi,
-  coffee: Coffee,
-  car: Car,
-  dumbbell: Dumbbell,
-  waves: Waves,
-  "paw-print": PawPrint,
-  wind: Wind,
-  tv: Tv,
-  wine: Wine,
-  "concierge-bell": ConciergeBell,
-};
+import { amenityIconMap } from "@/lib/amenity-icons";
 
 export type Amenity = {
   id: string;
@@ -43,7 +18,7 @@ export function AmenitiesGrid({ amenities }: { amenities: Amenity[] }) {
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
           {amenities.map((a) => {
-            const Icon = a.icon ? iconMap[a.icon] : null;
+            const Icon = a.icon ? amenityIconMap[a.icon] : null;
             return (
               <div
                 key={a.id}
