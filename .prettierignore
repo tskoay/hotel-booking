@@ -1,0 +1,8 @@
+node_modules
+.next
+.vercel
+.husky
+pnpm-lock.yaml
+public
+types/database.ts
+*.md
